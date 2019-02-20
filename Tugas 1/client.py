@@ -12,7 +12,7 @@ sock.connect(server_address)
 
 try:
     # Send data
-    message = 'INI ADALAH DATA YANG DIKIRIM ABCDEFGHIJKLMNOPQ'
+    message = 'PERCOBAAN PROGJAR 2019'
     print >>sys.stderr, 'sending "%s"' % message
     sock.sendall(message)
     # Look for the response
