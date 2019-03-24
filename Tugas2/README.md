@@ -1,8 +1,8 @@
 # Tugas 2 - Progjar E
-
+```
 Nama : Muhammad Ryanda Nugraha M
 NRP : 05111640000059
-
+```
 ## Deskripsi Tugas
 
 ![DeskripsiTugas](DeskripsiTugas.jpg)
