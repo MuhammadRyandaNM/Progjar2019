@@ -5,7 +5,7 @@ NRP : 05111640000059
 ```
 ## Deskripsi Tugas
 
-![alt text](/DeskripsiTugas.jpg)
+![DeskripsiTugas](DeskripsiTugas.jpg)
 
 Buatlah sebuat UDP Picture server yg secara periodik akan mengirimkan gambar-gambar ke client
 Sisi server, mengirimkan gambar-gambar ke client yg konek di port 9000
