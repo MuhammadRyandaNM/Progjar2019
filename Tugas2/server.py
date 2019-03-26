@@ -26,7 +26,7 @@ def getRequest():
        
 def setImage(ip, port):
     addr = (ip, port)
-    ImageName = ["Caustic.jpg","Bloodhound.png","Lifeline.png","Mirage.png","Wraith.jpg"]
+    ImageName = ["Caustic.jpg","Bloodhound.jpg","Lifeline.jpg","Mirage.jpg","Wraith.jpg"]
     for x in ImageName:
         time.sleep(5)
         sendImg(x,addr)
