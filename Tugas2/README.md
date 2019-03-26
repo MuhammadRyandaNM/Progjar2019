@@ -16,7 +16,7 @@ Berikut ini adalah instruksi tentang cara penggunaan script ini :
 - Jalankan run_all_client.sh
 - File yang diterima client akan disimpan di File_Client1, File_Client2, File_Client3, File_Client4 dan File_Client5
 
-### Windows (Tidak Direkomendasikan karena data terkadang corrupt saat transfer)
+### Windows
 - Jalankan server.py
 - Jalankan semua satu persatu
 - File yang diterima client akan disimpan di File_Client1, File_Client2, File_Client3, File_Client4 dan File_Client5
