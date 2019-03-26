@@ -14,12 +14,14 @@ Sisi client, akan mengambil gambar tersebut dan menyimpannya sesuai dengan nama 
 ## Cara Penggunaan
 Berikut ini adalah instruksi tentang cara penggunaan script ini :
 
-### Windows
-- Jalankan server.py
-- Jalankan client1.py, client2.py, client3.py, client4.py dan client5.py satu persatu
-- File yang diterima client akan disimpan di File_Client1, File_Client2, File_Client3, File_Client4 dan File_Client5
-
 ### Linux
 - Jalankan server.py
 - Jalankan run_all_client.sh
 - File yang diterima client akan disimpan di File_Client1, File_Client2, File_Client3, File_Client4 dan File_Client5
+
+### Windows (Tidak Direkomendasikan karena data bisa corrupt saat transfer)
+- Jalankan server.py
+- Jalankan semua satu persatu
+- File yang diterima client akan disimpan di File_Client1, File_Client2, File_Client3, File_Client4 dan File_Client5
+
+
