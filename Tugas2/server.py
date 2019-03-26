@@ -1,6 +1,7 @@
 from threading import Thread
 import socket
 import os
+import time
 
 SERVER_IP = "127.0.0.1"
 SERVER_PORT = 9000
@@ -14,7 +15,7 @@ sock.bind((SERVER_IP, SERVER_PORT))
 
 def getRequest():
     while True:
-        print "No Client Request"
+        print "Waiting Request"
         data, addr = sock.recvfrom(1024)
         data_to_string = str(data)
         print "Get Command : " + str(data)
@@ -27,6 +28,7 @@ def setImage(ip, port):
     addr = (ip, port)
     ImageName = ["Caustic.jpg","Bloodhound.png","Lifeline.png","Mirage.png","Wraith.jpg"]
     for x in ImageName:
+        time.sleep(5)
         sendImg(x,addr)
     sock.sendto("CLOSE".ljust(1024), addr)
 
@@ -50,6 +52,7 @@ def sendImg(imgname, addr):
         sock.sendto(data, addr)
         print "Sending "+str(sizeSent) + "/" + str(len(pckg)) + " bytes To " + str(addr[0]) + ":" + str(addr[1])
     sock.sendto(("END " + imgname).ljust(1024), addr)
+    
 
 while True:
     getRequest()
