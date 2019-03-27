@@ -6,7 +6,7 @@ import os
 from copy import copy
 filelist = []
 
-class SendingClass() :
+class ServerSend() :
     def __init__(self, sock, filetosend, addr):
         self.sock = sock
         self.file = filetosend
@@ -24,7 +24,7 @@ class SendingClass() :
                 break
         self.sock.send("##EOF".ljust(1024))
     
-    def directoryCrawler(self, directory):
+    def crawlDir(self, directory):
         self.sock.send("#directoryName".ljust(1024))
         self.sock.send(directory.ljust(1024))
         os.chdir(directory)
@@ -32,7 +32,7 @@ class SendingClass() :
         for files in filelist:
             
             if os.path.isdir(files):
-                self.directoryCrawler( files)
+                self.crawlDir( files)
                 continue
             self.sendFile(files)
             
@@ -45,7 +45,7 @@ class SendingClass() :
         isdir = os.path.isdir(self.file)
         if (isdir):
             self.sock.send("#directoryStart".ljust(1024))
-            self.directoryCrawler(self.file)
+            self.crawlDir(self.file)
             self.sock.send("#directoryEnd".ljust(1024))
         else :
             self.sock.send("#sendingFile".ljust(1024))
@@ -54,7 +54,7 @@ class SendingClass() :
         print "[-] finish sending "+ self.file +" to " + str(self.target)
         
 
-class ReadFiles(Thread):
+class FileReader(Thread):
     def __init__(self):
         Thread.__init__(self)
         self.selffile = "server.py"
@@ -70,7 +70,7 @@ class ReadFiles(Thread):
             newfiles = copy(files)
             for x in files:
                 if os.path.isdir(x):
-                    newfiles+=(self.getaFolder( os.path.join(currentdir,x)))
+                    newfiles+=(self.folderGetter( os.path.join(currentdir,x)))
             files = newfiles
             filelist = copy(files)
             sleep(1)
@@ -78,7 +78,7 @@ class ReadFiles(Thread):
     def stop(self):
         self.do_run = False
         
-    def getaFolder(self, directory):
+    def folderGetter(self, directory):
         globing = os.path.join(directory,"*")
         files = list(glob.glob(globing))
         newfiles = copy(files)
@@ -86,7 +86,7 @@ class ReadFiles(Thread):
             if x == None:
                 break
             if os.path.isdir(x):
-                newfiles+=(self.getaFolder(x))
+                newfiles+=(self.folderGetter(x))
         return newfiles
         
     def runProto(self):
@@ -96,7 +96,7 @@ class ReadFiles(Thread):
         filelist = list( files)
         
         
-class ServerforOne(Thread):
+class ServerOneClient(Thread):
     def __init__(self, connection, addr):
         self.connection= connection
         Thread.__init__(self)
@@ -113,7 +113,7 @@ class ServerforOne(Thread):
                 data = self.connection.recv(1024)
                 askedfile = list(filelist)[int(data)]
                 print ("[.]client asked " + askedfile)
-                send = SendingClass(self.connection, askedfile,self.target)
+                send = ServerSend(self.connection, askedfile,self.target)
                 send.run()
                 #self.count +=1
             elif "#close" in data:
@@ -135,14 +135,14 @@ class Server():
         while (True):
             self.sock.listen(1)
             connection, source = self.sock.accept()
-            newthread = ServerforOne(connection, source)
+            newthread = ServerOneClient(connection, source)
             newthread.start()
             
 
 if __name__ == "__main__":
     main = Server()
     try:
-        filefinder = ReadFiles()
+        filefinder = FileReader()
         filefinder.start()
 
         main.loop()

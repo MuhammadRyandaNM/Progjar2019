@@ -14,7 +14,7 @@ class Client:
         self.sock.send("#close")
     
     
-    def sendMessage(self):
+    def messageSender(self):
         while (True):
             
             self.sock.send("#askFiles")
@@ -107,7 +107,7 @@ class Client:
 if __name__ == "__main__":
     try:
         main = Client()
-        main.sendMessage()
+        main.messageSender()
     except KeyboardInterrupt:
         main.close()
         print("done")
