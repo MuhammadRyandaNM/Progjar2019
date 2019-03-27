@@ -5,7 +5,7 @@ NRP : 05111640000180
 ```
 ## Deskripsi Tugas
 
-![DeskripsiTugas](DeskripsiTugas.jpg)
+![DeskripsiTugas](DeskripsiTugas.PNG)
 
 
 ## Cara Penggunaan
