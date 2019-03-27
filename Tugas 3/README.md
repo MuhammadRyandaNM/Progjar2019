@@ -5,14 +5,16 @@ NRP : 05111640000180
 ```
 ## Deskripsi Tugas
 
-![DeskripsiTugas](DeskripsiTugas.PNG)
+![DeskripsiTugas](DeskripsiTugas.jpg)
 
 
 ## Cara Penggunaan
 Berikut ini adalah instruksi tentang cara penggunaan script ini :
 
+'''
 1.Run Server.py
 2.Run Client.py
 3.Enjoy
+'''
 
 

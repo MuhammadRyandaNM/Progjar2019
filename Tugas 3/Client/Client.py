@@ -32,7 +32,7 @@ class Client:
                 print ("%s. %s"%(a, datas[a]))
 
                 ranged.append(a)   
-            print("select by its number")
+            print("Pilih berdasarkan nomor")
             fileask = raw_input()
             fileask = int(fileask)
             if not fileask in ranged:
