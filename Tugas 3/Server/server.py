@@ -13,7 +13,7 @@ class SendingClass() :
         self.target = addr
     
     def sendFile(self, filename):
-        print "[.] sending "+ filename +" to " + str(self.target)
+        print "[.] Sending "+ filename +" to " + str(self.target)
         self.sock.send("#start".ljust(1024))
         self.sock.send(filename.ljust(1024))
         fp = open(filename, 'rb')

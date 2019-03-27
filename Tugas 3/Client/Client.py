@@ -87,7 +87,7 @@ class Client:
                         os.chdir(data)
                         
                     elif ("#directoryDone" in data):
-                        print "[-] current directory done"
+                        print "[-] Current directory done"
                         os.chdir('..')
                         
                     elif("#start" in data):
